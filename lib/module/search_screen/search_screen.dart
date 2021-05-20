@@ -4,6 +4,7 @@ import 'package:news/shared/components/components.dart';
 import 'package:news/shared/cubit/cubit.dart';
 import 'package:news/shared/cubit/states.dart';
 
+// ignore: must_be_immutable
 class SearchScreen extends StatelessWidget {
   var searchController = TextEditingController();
 
@@ -25,7 +26,7 @@ class SearchScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyText1,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    prefix: Icon(Icons.search),
+                    prefix: const Icon(Icons.search),
                     labelText: 'Search',
                     labelStyle: Theme.of(context).textTheme.bodyText2,
                     border: OutlineInputBorder(
@@ -33,7 +34,7 @@ class SearchScreen extends StatelessWidget {
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.grey,
                         width: 0.8,
                       ),
@@ -41,12 +42,6 @@ class SearchScreen extends StatelessWidget {
                   ),
                   onChanged: (String value) {
                     NewsCubit.get(context).getSearchData(value);
-                  },
-                  validator: (value) {
-                    if (value == null && value!.isEmpty) {
-                      return 'Please type your search';
-                    }
-                    return null;
                   },
                 ),
               ),

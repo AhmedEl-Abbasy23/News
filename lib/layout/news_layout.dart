@@ -5,6 +5,7 @@ import 'package:news/shared/components/components.dart';
 import 'package:news/shared/cubit/cubit.dart';
 import 'package:news/shared/cubit/states.dart';
 
+// ignore: use_key_in_widget_constructors
 class NewsLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,14 +15,14 @@ class NewsLayout extends StatelessWidget {
         NewsCubit cubit = NewsCubit.get(context);
         return Scaffold(
           appBar: AppBar(
-            title: Text('News'),
+            title: const Text('News'),
             titleSpacing: 18.0,
             actions: [
               IconButton(
                 onPressed: () {
                   navigateTo(context,SearchScreen());
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.search,
                 ),
               ),
@@ -29,7 +30,7 @@ class NewsLayout extends StatelessWidget {
                 onPressed: (){
                   cubit.changeMode();
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.brightness_4_outlined,
                 ),
               ),

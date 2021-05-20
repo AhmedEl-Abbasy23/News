@@ -4,6 +4,7 @@ import 'package:news/shared/components/components.dart';
 import 'package:news/shared/cubit/cubit.dart';
 import 'package:news/shared/cubit/states.dart';
 
+// ignore: use_key_in_widget_constructors
 class SportsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

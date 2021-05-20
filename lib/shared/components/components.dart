@@ -26,8 +26,9 @@ Widget buildArticleItem(article, context) => InkWell(
                 ),
               ),
             ),
-            SizedBox(width: 20.0),
+            const SizedBox(width: 20.0),
             Expanded(
+              // ignore: sized_box_for_whitespace
               child: Container(
                 height: 120.0,
                 child: Column(
@@ -45,7 +46,7 @@ Widget buildArticleItem(article, context) => InkWell(
                     ),
                     Text(
                       '${article['publishedAt']}',
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ],
                 ),
@@ -67,14 +68,19 @@ Widget myDivider() => Padding(
 
 Widget articleBuilder(list, context, {isSearch = false}) => list.length > 0
     ? ListView.separated(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) => buildArticleItem(list[index], context),
         separatorBuilder: (context, index) => myDivider(),
         itemCount: list.length,
       )
     : isSearch
-        ? Container()
-        : Center(child: CircularProgressIndicator());
+        ? Center(
+            child: Text(
+            'Type your search.',
+            style: Theme.of(context).textTheme.bodyText2,
+          ))
+        : const Center(child: CircularProgressIndicator());
 
-void navigateTo(context, widget) =>
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => widget));
+void navigateTo(context, widget) => Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => widget),
+    );

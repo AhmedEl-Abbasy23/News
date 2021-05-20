@@ -4,6 +4,7 @@ import 'package:news/shared/components/components.dart';
 import 'package:news/shared/cubit/cubit.dart';
 import 'package:news/shared/cubit/states.dart';
 
+// ignore: use_key_in_widget_constructors
 class BusinessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,21 +17,3 @@ class BusinessScreen extends StatelessWidget {
     );
   }
 }
-
-/*ConditionalBuilder(
-condition: state is! NewsGetBusinessLoadingState,
-builder: (BuildContext context) => ListView.separated(
-itemBuilder: (context, index) => buildArticleItem(),
-separatorBuilder: (context, index) => Padding(
-padding: const EdgeInsets.symmetric(horizontal: 10.0),
-child: Container(
-height: 3,
-width: double.infinity,
-color: Colors.grey,
-),
-),
-itemCount: 10,
-),
-fallback: (BuildContext context) =>
-Center(child: CircularProgressIndicator()),
-);*/

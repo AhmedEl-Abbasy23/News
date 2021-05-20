@@ -16,25 +16,25 @@ class NewsCubit extends Cubit<NewsStates> {
   int currentIndex = 0;
 
   List<BottomNavigationBarItem> bottomItems = [
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Icon(
         Icons.work,
       ),
       label: 'Business',
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Icon(
         Icons.sports,
       ),
       label: 'Sports',
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Icon(
         Icons.science,
       ),
       label: 'Science',
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Icon(
         Icons.computer,
       ),
@@ -61,6 +61,7 @@ class NewsCubit extends Cubit<NewsStates> {
       CacheHelper.putBoolean(key: 'isDark', value: isDark).then((value) {
         emit(NewsChangeModeState());
       }).catchError((error) {
+        // ignore: avoid_print
         print(error.toString());
       });
     }
@@ -92,6 +93,7 @@ class NewsCubit extends Cubit<NewsStates> {
       emit(NewsGetBusinessSuccessState());
     }).catchError((error) {
       emit(NewsGetBusinessErrorState(error.toString()));
+      // ignore: avoid_print
       print(error.toString());
     });
   }
@@ -168,7 +170,7 @@ class NewsCubit extends Cubit<NewsStates> {
     DioHelper.getData(
       url: 'v2/everything',
       query: {
-        'q': '$value',
+        'q': value,
         'apiKey': '65c24ae726ee4fbd93e6f967b1519c9d',
       },
     ).then((value) {
@@ -176,6 +178,7 @@ class NewsCubit extends Cubit<NewsStates> {
       emit(NewsGetSearchSuccessState());
     }).catchError((error) {
       emit(NewsGetSearchErrorState(error.toString()));
+      // ignore: avoid_print
       print(error.toString());
     });
   }
